@@ -11,4 +11,9 @@ class ProductController extends Controller
     {
         return Inertia::render('products/products');
     }
+
+    public function create()
+    {
+        return Inertia::render('products/create');
+    }
 }

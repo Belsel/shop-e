@@ -1,14 +1,12 @@
 import AppLayout from '@/layouts/app-layout';
-import { products } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Button } from '@headlessui/react';
-import { Head, Link } from '@inertiajs/react';
-import { create } from '@/routes/products/index'
+import { Head } from '@inertiajs/react';
+import { create } from '@/routes/products'
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Products',
-        href: products().url,
+        title: 'Create a new product',
+        href: create().url,
     },
 ];
 
@@ -18,7 +16,7 @@ export default function Index() {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Products" />
             <div className='m-4'>
-                <Link href={create()}><Button>New Product</Button></Link>
+
             </div>
         </AppLayout>
     );
