@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 
-class ProductController extends Controller
+class GraphsController extends Controller
 {
     public function index()
     {
-        return Inertia::render('products/index', []);
+        return Inertia::render('graphs/index', []);
     }
 }
