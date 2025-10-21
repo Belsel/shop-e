@@ -10,6 +10,7 @@ import {
 import { dashboard } from '@/routes';
 import { Link } from '@inertiajs/react';
 import AppLogo from './app-logo';
+import ProductForm from './ui/product-form';
 
 
 export function AppSidebar() {
@@ -32,7 +33,7 @@ export function AppSidebar() {
             </SidebarContent>
 
             <SidebarFooter>
-
+                <ProductForm></ProductForm>
             </SidebarFooter>
         </Sidebar>
     );
