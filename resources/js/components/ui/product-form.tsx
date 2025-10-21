@@ -1,49 +1,50 @@
-import { useState } from "react";
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { useForm } from '@inertiajs/react';
+import products from '@/routes/products';
 
-type ProductFormProps = {
-  onSubmit?: (data: { name: string; price: number }) => void;
-};
+export default function ProductForm() {
 
-export default function ProductForm({ onSubmit }: ProductFormProps) {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
+  const { data, setData, post } = useForm({
+    name: '',
+    price: '',
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const numericPrice = parseFloat(price);
-    if (onSubmit && !isNaN(numericPrice)) {
-      onSubmit({ name, price: numericPrice });
-    }
+    console.log('Submitting form with data:', data);
+    post(products.store().url);
   };
 
   return (
     <div className="group" data-collapsible="menu">
       <form onSubmit={handleSubmit}>
-        <label className="block mb-2 font-bold">Create new product</label>
+        <Label className="block mb-2 font-bold">Create new product</Label>
         <div className="flex flex-row gap-1">
-          <input
+          <Input
             type="text"
             placeholder="Product name"
             className="w-2/3 border rounded-2xl p-2 text-xs"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            />
-          <input
+            value={data.name}
+            onChange={(e) => setData('name', e.target.value)}
+          />
+          <Input
             type="number"
             placeholder="Price"
             className="w-1/3 border rounded-2xl p-2 text-right text-xs"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            value={data.price}
+            onChange={(e) => setData('price', e.target.value)}
             min="0"
             step="0.01"
           />
         </div>
-        <button
+        <Button
           type="submit"
           className="mt-4 bg-[var(--sidebar-accent)] text-[var(--sidebar-accent-foreground)] px-4 py-2 rounded"
-          >
+        >
           Create new product
-        </button>
+        </Button>
       </form>
     </div>
   );
