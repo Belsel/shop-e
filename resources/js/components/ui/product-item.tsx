@@ -13,7 +13,7 @@ export function ProductItem({product}: {product: Product}) {
                 </div>
                 <div className='flex flex-col w-1/6'>
                     <Button className='h-1/4'>Edit</Button>
-                    <Button className='h-1/4'>Remove</Button>
+                    <Button className='h-1/4 var(--color-danger)'>Remove</Button>
                 </div>
             </div>
     );

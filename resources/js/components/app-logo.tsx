@@ -1,15 +1,8 @@
-import { useState } from 'react';
 import AppLogoIcon from './app-logo-icon';
 
 export default function AppLogo() {
-    const [hover, setHover] = useState(false);
-
     return (
-        <div
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            className="flex flex-row"
-        >
+        <div className="flex flex-row">
             <div className="flex aspect-square size-8 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
                 <AppLogoIcon className="var(--color-primary-foreground) dark:var(--color-primary) size-5 fill-current" />
             </div>
