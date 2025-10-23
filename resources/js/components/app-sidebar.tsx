@@ -12,8 +12,9 @@ import { Link } from '@inertiajs/react';
 import AppLogo from './app-logo';
 import ProductForm from './ui/product-form';
 
+type Product = { id: number; name: string; price: number };
 
-export function AppSidebar() {
+export function AppSidebar({ products = [] }: { products?: Product[] }) {
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>
@@ -29,7 +30,12 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-
+                {(products || []).map((product) => (
+                    <div key={product.id}>
+                        <h3>{product.name}</h3>
+                        <p>{product.price}€</p>
+                    </div>
+                ))}
             </SidebarContent>
 
             <SidebarFooter>

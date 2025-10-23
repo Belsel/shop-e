@@ -41,7 +41,7 @@ export default function ProductForm() {
         </div>
         <Button
           type="submit"
-          className="mt-4 bg-[var(--sidebar-accent)] text-[var(--sidebar-accent-foreground)] px-4 py-2 rounded"
+          className="mt-4 bg-[var(--accent)] text-[var(--sidebar-accent-foreground)] px-4 py-2 rounded"
         >
           Create new product
         </Button>

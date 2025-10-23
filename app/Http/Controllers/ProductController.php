@@ -9,10 +9,6 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
-        return Inertia::render('products/index', []);
-    }
 
     public function create()
     {
@@ -27,7 +23,7 @@ class ProductController extends Controller
         ]);
 
         Product::create($request->all());
-        return redirect()->route('products.index');
+        return redirect()->back();
 
     }
 }
