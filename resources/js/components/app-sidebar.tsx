@@ -11,6 +11,7 @@ import { dashboard } from '@/routes';
 import { Link } from '@inertiajs/react';
 import AppLogo from './app-logo';
 import ProductForm from './ui/product-form';
+import { ProductItem } from './ui/product-item';
 
 type Product = { id: number; name: string; price: number };
 
@@ -31,10 +32,7 @@ export function AppSidebar({ products = [] }: { products?: Product[] }) {
 
             <SidebarContent>
                 {(products || []).map((product) => (
-                    <div key={product.id}>
-                        <h3>{product.name}</h3>
-                        <p>{product.price}€</p>
-                    </div>
+                    <ProductItem product={product}></ProductItem>
                 ))}
             </SidebarContent>
 
