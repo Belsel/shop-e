@@ -10,11 +10,6 @@ use App\Models\Product;
 class ProductController extends Controller
 {
 
-    public function create()
-    {
-        return Inertia::render('products/create', []);
-    }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -30,5 +25,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+        return redirect()->back();
     }
 }
