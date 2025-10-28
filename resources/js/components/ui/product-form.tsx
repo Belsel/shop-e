@@ -60,12 +60,17 @@ export default function ProductForm({selectedProduct, onClear,}: {selectedProduc
             step="0.01"
           />
         </div>
-        <Button
-          type="submit"
-          className="mt-4 bg-[var(--accent)] text-[var(--sidebar-accent-foreground)] px-4 py-2 rounded"
-        >
+        <div className='flex flex-row w-ful rounded py-2'>
+          <Button
+            type="submit"
+            className="w-2/3 bg-[var(--accent)] text-[var(--sidebar-accent-foreground)] mx-0.5"
+          >
           {selectedProduct ? 'Edit product' : 'Create new product'}
-        </Button>
+          </Button>
+          <Button variant={"secondary"} className={`w-1/3 ${selectedProduct ? 'flex' : 'hidden'} mx-0.5`}>
+          Cancel
+          </Button>
+          </div>
       </form>
     </div>
   );

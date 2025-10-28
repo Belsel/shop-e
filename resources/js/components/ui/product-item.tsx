@@ -24,9 +24,9 @@ export function ProductItem({product, onEdit}: {product: Product; onEdit: (produ
                     <Label className='text-base justify-start truncate'>{product.name}</Label>
                     <Label className="text-xs text-[var(--muted-foreground)] truncate">{product.price}€</Label>
                 </div>
-                <div className='flex flex-col w-1/6 justify-end '>
-                    <Button onClick={() => onEdit(product)} className='h-6'><Pen></Pen></Button>
-                    <Button variant={'destructive'} onClick={() => handleDelete(product)} className='h-6'><Trash2></Trash2></Button>
+                <div className='flex flex-col w-1/7 justify-end ml-1 gap-0.5'>
+                    <Button onClick={() => onEdit(product)} className='h-5 mb-0.5'><Pen></Pen></Button>
+                    <Button variant={'destructive'} onClick={() => handleDelete(product)} className='h-5 mt-0.5'><Trash2></Trash2></Button>
                 </div>
             </div>
     );
