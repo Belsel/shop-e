@@ -37,6 +37,7 @@ export function AppSidebar({ products = [] }: { products?: Product[] }) {
             <SidebarContent>
                 {(products || []).map((product) => (
                     <ProductItem
+                        key={product.id}
                         product={product}
                         onEdit={() => setSelectedProduct(product)}
                     ></ProductItem>
