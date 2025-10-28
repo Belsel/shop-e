@@ -74,7 +74,7 @@ export default function ProductForm({ selectedProduct, onClear, }: { selectedPro
 
           <Button
             onClick={() => { onClear(); setOpen(true); }}
-            className="hidden w-2/3 bg-[var(--accent)] text-[var(--sidebar-accent-foreground)] mx-0.5 group-data-[state=collapsed]:flex"
+            className="hidden w-full bg-[var(--accent)] text-[var(--sidebar-accent-foreground)] mx-1 group-data-[state=collapsed]:flex"
           >
             <Plus></Plus>
           </Button>
