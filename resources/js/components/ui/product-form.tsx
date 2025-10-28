@@ -3,24 +3,45 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useForm } from '@inertiajs/react';
 import products from '@/routes/products';
+import { useEffect } from 'react';
 
-export default function ProductForm() {
+type Product = { id: number; name: string; price: number };
 
-  const { data, setData, post } = useForm({
+export default function ProductForm({selectedProduct, onClear,}: {selectedProduct: Product | null; onClear: () => void}) {
+
+  const { data, setData, post, put } = useForm({
     name: '',
     price: '',
   });
 
+  useEffect(() => {
+    if(selectedProduct) {
+      setData({
+        name: selectedProduct.name,
+        price: selectedProduct.price.toString(),
+      });
+    } else {
+      setData({name: '', price: ''});
+    } 
+  }, [selectedProduct, setData]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Submitting form with data:', data);
-    post(products.store().url);
+    if (selectedProduct) {
+      put(products.update(selectedProduct).url)
+      onClear();
+    }
+    else
+    {
+      post(products.store().url);
+      setData({name: '', price: ''});
+    }
   };
 
   return (
     <div className="group" data-collapsible="menu">
       <form onSubmit={handleSubmit}>
-        <Label className="block mb-2 font-bold">Create new product</Label>
+        <Label className="block mb-2 font-bold">{selectedProduct ? 'Edit product' : 'Create new product'}</Label>
         <div className="flex flex-row gap-1">
           <Input
             type="text"
@@ -43,7 +64,7 @@ export default function ProductForm() {
           type="submit"
           className="mt-4 bg-[var(--accent)] text-[var(--sidebar-accent-foreground)] px-4 py-2 rounded"
         >
-          Create new product
+          {selectedProduct ? 'Edit product' : 'Create new product'}
         </Button>
       </form>
     </div>

@@ -15,6 +15,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
     Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::put('/products/{product}', [ProductController::class,'update'])->name('products.update');
     Route::get('/graphs', [GraphsController::class, 'index'])->name('graphs.index');
 });
 

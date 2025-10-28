@@ -27,4 +27,16 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->back();
     }
+
+    public function update(Request $request, Product $product)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        $product->update($request->all());
+
+        return redirect()->back();
+    }
 }

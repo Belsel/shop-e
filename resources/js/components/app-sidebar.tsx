@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import { Link } from '@inertiajs/react';
+import { useState } from 'react';
 import AppLogo from './app-logo';
 import ProductForm from './ui/product-form';
 import { ProductItem } from './ui/product-item';
@@ -16,6 +17,9 @@ import { ProductItem } from './ui/product-item';
 type Product = { id: number; name: string; price: number };
 
 export function AppSidebar({ products = [] }: { products?: Product[] }) {
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(
+        null,
+    );
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>
@@ -32,12 +36,18 @@ export function AppSidebar({ products = [] }: { products?: Product[] }) {
 
             <SidebarContent>
                 {(products || []).map((product) => (
-                    <ProductItem product={product}></ProductItem>
+                    <ProductItem
+                        product={product}
+                        onEdit={() => setSelectedProduct(product)}
+                    ></ProductItem>
                 ))}
             </SidebarContent>
 
             <SidebarFooter>
-                <ProductForm></ProductForm>
+                <ProductForm
+                    selectedProduct={selectedProduct}
+                    onClear={() => setSelectedProduct(null)}
+                ></ProductForm>
             </SidebarFooter>
         </Sidebar>
     );
