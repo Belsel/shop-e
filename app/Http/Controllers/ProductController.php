@@ -12,12 +12,18 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
+            'image' => 'nullable|image|max:2048',
         ]);
+        
+        if ($request->hasFile('image')) {
+        $validated['image'] = $request->file('image')->store('products', 'public');
+        }
 
-        Product::create($request->all());
+
+        Product::create($validated);
         return redirect()->back();
 
     }
@@ -33,6 +39,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
+            'image' => 'nullable|image|max:2048',
         ]);
 
         $product->update($request->all());

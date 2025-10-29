@@ -5,7 +5,7 @@ import products from '@/routes/products'
 import { Trash2, Pen } from 'lucide-react';
 
 
-type Product = { id: number; name: string; price: number };
+type Product = { id: number; name: string; price: number, image: string };
 
 export function ProductItem({ product, onEdit }: { product: Product; onEdit: (product: Product) => void }) {
 
@@ -19,7 +19,7 @@ export function ProductItem({ product, onEdit }: { product: Product; onEdit: (pr
 
     return (
         <div key={product.id} className="group flex border rounded-xl flex-row p-2 h-fit group-data-[state=collapsed]:p-1">
-            <img src="https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/201811/14/00113333203761____2__1200x1200.jpg?impolicy=Resize&width=1200" alt="" className='max-w-12 max-h-12 border rounded-sm group-data-[state=collapsed]:w-10 '></img>
+            <img src={product.image ?? "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/201811/14/00113333203761____2__1200x1200.jpg?impolicy=Resize&width=1200"} alt="" className='max-w-12 max-h-12 border rounded-sm group-data-[state=collapsed]:w-10 '></img>
             <div className='flex flex-col ml-1 w-full justify-start truncate group-data-[state=collapsed]:hidden'>
                 <Label className='text-base justify-start truncate'>{product.name}</Label>
                 <Label className="text-xs text-[var(--muted-foreground)] truncate">{product.price}€</Label>
