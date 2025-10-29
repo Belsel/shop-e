@@ -22,7 +22,7 @@ export function NavFooter({
             className={`group-data-[collapsible=icon]:p-0 ${className || ''}`}
         >
             <SidebarGroupContent>
-                <SidebarMenu>
+                <SidebarMenu orientation='vertical' className='w-fit'>
                     {items.map((item) => (
                         <SidebarMenuItem key={item.title}>
                             <SidebarMenuButton
