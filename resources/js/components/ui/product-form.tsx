@@ -78,7 +78,7 @@ export default function ProductForm({ selectedProduct, onClear, }: { selectedPro
           >
             <Plus></Plus>
           </Button>
-          <Button variant={"secondary"} className={`w-1/3 ${selectedProduct ? 'flex' : 'hidden'} mx-0.5`}>
+          <Button variant={"secondary"} className={`group-data-[state=collapsed]:hidden w-1/3 ${selectedProduct ? 'flex' : 'hidden'} mx-0.5`}>
             Cancel
           </Button>
         </div>
