@@ -7,7 +7,7 @@ function App(): JSX.Element {
   const [count, setCount] = useState<number>(0);
 
   return (
-    <main className="min-h-screen min-w-[320px] m-0 flex flex-col items-center justify-center text-[#ffffffde] bg-[#ffffff] font-sans leading-[1.5] font-normal antialiased text-center">
+    <main className="min-h-screen min-w-[320px] m-0 flex flex-col items-center justify-center text-[#ffffffde] bg-[#ffffff] font-sans leading-normal font-normal antialiased text-center">
       <div className="flex justify-center gap-6 mb-6">
         <a
           href="https://vite.dev"
