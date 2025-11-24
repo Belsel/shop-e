@@ -1,5 +1,5 @@
 import { AppLayoutTemplate } from "./app/desktop-layout";
-import { type BreadcrumbItem } from "../resources/types/types";
+import { type BreadcrumbItem } from "../resources/js/types/types";
 
 interface AppLayoutProps {
     children: React.ReactNode;

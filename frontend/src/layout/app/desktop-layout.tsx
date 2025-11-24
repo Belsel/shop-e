@@ -1,11 +1,18 @@
 import React, { PropsWithChildren } from "react";
-import { BreadcrumbItem } from "../../resources/types/types";
+import { BreadcrumbItem } from "../../resources/js/types/types";
+import Sidebar from "../../resources/js/components/sidebar";
+import HeaderTabs from "../../resources/js/components/header";
 
-export function AppLayoutTemplate({ children, breadcrumbs }: PropsWithChildren<{ breadcrumbs?: BreadcrumbItem[] | undefined }>) {
+export function AppLayoutTemplate({ children, breadcrumbs = [] }: PropsWithChildren<{ breadcrumbs?: BreadcrumbItem[] }>) {
     return (
         <>
-            <button className="btn btn-secondary mb-4">Desktop Layout Button</button>
-            {children}
+            <div className="flex flex-row">
+                <Sidebar />
+                <div className="flex flex-col">
+                    <HeaderTabs breadcrumbs={breadcrumbs} />
+                    {children}
+                </div>
+            </div>
         </>
     );
 }
