@@ -5,20 +5,10 @@ import HeaderTabs from "../../resources/js/components/header";
 
 
 export function AppLayoutTemplate({ children, breadcrumbs = [] }: PropsWithChildren<{ breadcrumbs?: BreadcrumbItem[] }>) {
-    const sidebarProp: SaleItem[] = [
-        {
-            id: "1",
-            price: 100,
-            product: {
-                id: "p1",
-                name: "Product 1",
-                description: "Description for Product 1",
-            },
-        }];
     return (
         <>
             <div className="flex flex-row">
-                <Sidebar sidebarProps={sidebarProp} />
+                <Sidebar />
                 <div className="flex flex-col w-full">
                     <HeaderTabs breadcrumbs={breadcrumbs} />
                     {children}

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BreadcrumbItem } from "../types/types";
 
 type HeaderProps = {
