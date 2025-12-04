@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SaleItem } from "../types/types";
+import { SidebarSaleItem } from "./sidebar-sale-item";
 
 export default function Sidebar() {
     const [isOpen, setIsOpen] = useState(true);
@@ -15,8 +16,16 @@ export default function Sidebar() {
                 description: `Description for Product ${products.length + 1}`,
             },
         };
-        setProducts([...products, newSale]);
-        localStorage.setItem("Sales", JSON.stringify(products));
+        const updatedProducts = [...products, newSale];
+        setProducts(updatedProducts);
+        localStorage.setItem("Sales", JSON.stringify(updatedProducts));
+    }
+    const removeSaleItem = (id: string) => {
+        {
+            const updatedProducts = products.filter((sale) => sale.id !== id);
+            setProducts(updatedProducts);
+            localStorage.setItem("Sales", JSON.stringify(updatedProducts));
+        }
     }
 
     const addOrder = () => {
@@ -36,7 +45,7 @@ export default function Sidebar() {
                     <ul className="space-y-2">
                         {products.map((sale: SaleItem) => (
                             <li key={sale.id} className="px-4 py-2 hover:bg-gray-700">
-                                {isOpen ? sale.product.name : ""}
+                                {isOpen ? <SidebarSaleItem sale={sale} removeSaleItem={removeSaleItem} /> : ""}
                             </li>
                         ))}
                     </ul>
