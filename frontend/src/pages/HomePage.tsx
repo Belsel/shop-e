@@ -1,19 +1,25 @@
 // src/pages/HomePage.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { ProductItem } from "../resources/js/types/types";
 
 export default function HomePage() {
-    const [count, setCount] = useState(0);
-
+    const [products, setProducts] = useState<ProductItem[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    useEffect(() => {
+        axios.get<ProductItem[]>("/api/products")
+            .then((response) => {
+                setProducts(response.data);
+                console.log(response.data);
+            }).catch((error) => {
+                console.error("Error fetching products:", error);
+            }).finally(() => {
+                setLoading(false);
+            });
+    }, []);
     return (
         <div className="p-4">
-            <h1 className="text-xl font-bold mb-4">Welcome to My App</h1>
-            <p className="mb-2">Current count: {count}</p>
-            <button
-                className="btn btn-primary"
-                onClick={() => setCount((c) => c + 1)}
-            >
-                Increment
-            </button>
+            {/*Fetch products from the back end */}
         </div>
     );
 }

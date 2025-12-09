@@ -16,7 +16,6 @@ export default function HeaderTabs({ breadcrumbs = [] }: HeaderProps) {
                         <button key={breadcrumb.title} onClick={() => { breadcrumb?.href && (window.location.href = breadcrumb.href); }} className="hover:underline">
                             {breadcrumb.title}
                         </button>
-
                     ))}
                 </nav>
             </header>

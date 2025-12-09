@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "dev:all": "node run-services.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

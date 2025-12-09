@@ -1,0 +1,19 @@
+{
+    "services": [
+        {
+            "name": "FRONTEND",
+            "color": "green",
+            "command": "cd Frontend && npm run dev"
+        },
+        {
+            "name": "BACKEND",
+            "color": "blue",
+            "command": "cd Backend && php artisan serve"
+        },
+        {
+            "name": "DEVTOOLS",
+            "color": "magenta",
+            "command": "react-devtools"
+        }
+    ]
+}
